@@ -2,7 +2,7 @@
 
 class TextAnalyzer {
 
-    private array words; // analysis text variable as array with words
+    private array $words; // analysis text variable as array with words
     private string $text; // analysis text variable
 
     //set the text for analysis
