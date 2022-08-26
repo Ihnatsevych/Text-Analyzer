@@ -2,14 +2,14 @@
 
 class TextAnalyzer {
 
-    private array $text_array; // analysis text variable as array with words
+    private array words; // analysis text variable as array with words
     private string $text; // analysis text variable
 
     //set the text for analysis
     public function __construct(string $text)
     {
         $this->text = $text; // set text to class string variable
-        $this->text_array = preg_split("/[\s,]+/", $text); // split the text into separate words and set to text array variable
+        $this->words = preg_split("/[\s,]+/", $text); // split the text into separate words and set to text array variable
 
         //check for the number of permissible words in the text
         $count = $this->getWordsCount();
@@ -21,7 +21,7 @@ class TextAnalyzer {
     // get count of words in the text
     public function getWordsCount()
     {
-        return count($this->text_array);
+        return count($this->words);
     }
 
     // get count of symbols in the text
@@ -36,7 +36,7 @@ class TextAnalyzer {
 
         //calculate the number of letters in each word
         $count = 0;
-        foreach ($this->text_array as $word){
+        foreach ($this->words as $word){
             $count += mb_strlen($word);
         }
 
@@ -64,7 +64,7 @@ class TextAnalyzer {
     {
         $top = [];
 
-        foreach ($this->text_array as $word){
+        foreach ($this->words as $word){
 
             //set for new words in the text count 1, for another add 1 to count
             if(!array_key_exists($word, $top)){
